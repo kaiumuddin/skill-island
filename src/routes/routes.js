@@ -9,6 +9,7 @@ import Home from "../components/Home";
 import Login from "../components/Login";
 import Register from "../components/Register";
 import Main from "../layout/Main";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -46,7 +47,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/checkout/:id',
-                element: <CheckOutPage></CheckOutPage>,
+                element: <PrivateRoute><CheckOutPage></CheckOutPage></PrivateRoute>,
                 loader: ({params}) => fetch(`https://skill-island-server-kaiumuddin.vercel.app/courses/${params.id}`)
 
             },

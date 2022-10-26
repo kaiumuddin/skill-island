@@ -1,10 +1,11 @@
 import React, {useContext} from 'react';
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {AuthContext} from "../contexts/UserContext";
 import {toast} from 'react-toastify';
 const Register = () => {
 
     const {createUser, updateProfile, verifyEmail, signInWithGoogle} = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -15,6 +16,8 @@ const Register = () => {
         const password = form.password.value;
         const photoURL = form.photoURL.value;
 
+        console.log(photoURL);
+
         createUser(email, password)
             .then(result => {
                 toast.success('New account created');
@@ -23,6 +26,7 @@ const Register = () => {
                 updateProfile(username, photoURL)
                     .then(() => {
                         toast.success('Name Updated');
+                        navigate('/');
                     })
                     .catch((error) => {
                         toast.error(error.message);

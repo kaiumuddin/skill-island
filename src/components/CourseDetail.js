@@ -41,7 +41,7 @@ const CourseDetail = () => {
                             <p className="leading-snug" >Praesentium ea et neque distinctio quas eius repudiandae quaerat obcaecati voluptatem similique!</p>
                         </div>
                     </div>
-                    <Link to={`/checkout/${id}`} type="button" className="px-8 py-3 font-semibold rounded-full bg-blue-300  dark:bg-gray-100 dark:text-gray-800" >Rounded</Link>
+                    <Link to={`/checkout/${id}`} type="button" className="px-8 py-3 font-semibold rounded-full bg-blue-300  dark:bg-gray-100 dark:text-gray-800 text-center" >Get Premium Accesss</Link>
                 </div>
                 <div className="lg:w-1/2 xl:w-3/5 dark:bg-gray-800" >
                     <div className="flex items-center justify-center p-4 md:p-8 lg:p-12" >
