@@ -1,5 +1,6 @@
 import {createBrowserRouter} from "react-router-dom";
 import Blog from "../components/Blog";
+import CourseDetail from "../components/CourseDetail";
 import Courses from "../components/Courses";
 import ErrorPage from "../components/ErrorPage";
 import FAQ from "../components/FAQ";
@@ -32,7 +33,15 @@ const router = createBrowserRouter([
             },
             {
                 path: '/courses',
-                element: <Courses></Courses>
+                element: <Courses></Courses>,
+                loader: () => fetch('https://skill-island-server-kaiumuddin.vercel.app/courses')
+
+            },
+            {
+                path: '/courseDetails/:id',
+                element: <CourseDetail></CourseDetail>,
+                loader: ({params}) => fetch(`https://skill-island-server-kaiumuddin.vercel.app/courses/${params.id}`)
+
             },
             {
                 path: '/faq',
