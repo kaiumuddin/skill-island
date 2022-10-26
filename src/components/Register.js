@@ -1,25 +1,62 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {Link} from "react-router-dom";
-
+import {AuthContext} from "../contexts/UserContext";
+import {toast} from 'react-toastify';
 const Register = () => {
+
+    const {createUser, updateProfile, verifyEmail, signInWithGoogle} = useContext(AuthContext);
+
+    const handleSubmit = event => {
+        event.preventDefault();
+        const form = event.target;
+
+        const username = form.username.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        const photoURL = form.photoURL.value;
+
+        createUser(email, password)
+            .then(result => {
+                toast.success('New account created');
+                console.log(result.user);
+
+                updateProfile(username, photoURL)
+                    .then(() => {
+                        toast.success('Name Updated');
+                    })
+                    .catch((error) => {
+                        toast.error(error.message);
+                    });
+
+            })
+            .catch((error) => {
+                toast.error(error.message);
+            });
+
+    };
+
     return (
         <div className=" flex justify-center items-center h-screen">
             <div className="w-full max-w-md p-8 space-y-3 rounded-xl shadow-md bg-white dark:bg-gray-900 dark:text-gray-100"  >
                 <h1 className="text-2xl font-bold text-center"  >Register</h1>
-                <form novalidate="" action="" className="space-y-6 ng-untouched ng-pristine ng-valid"  >
+                <form onSubmit={handleSubmit} className="space-y-6 ng-untouched ng-pristine ng-valid"  >
                     <div className="space-y-1 text-sm"  >
-                        <label for="username" className="block dark:text-gray-400"  >Username</label>
+                        <label htmlFor="username" className="block dark:text-gray-400"  >Username</label>
                         <input type="text" name="username" id="username" placeholder="Username" className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400" />
                     </div>
                     <div className="space-y-1 text-sm"  >
-                        <label for="email" className="block dark:text-gray-400"  >Email</label>
+                        <label htmlFor="email" className="block dark:text-gray-400"  >Email</label>
                         <input type="email" name="email" id="email" placeholder="Email" className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400" />
                     </div>
                     <div className="space-y-1 text-sm"  >
-                        <label for="password" className="block dark:text-gray-400"  >Password</label>
+                        <label htmlFor="password" className="block dark:text-gray-400"  >Password</label>
                         <input type="password" name="password" id="password" placeholder="Password" className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400" />
                     </div>
-                    <button className="block w-full p-3 text-center rounded-sm bg-slate-100 dark:text-gray-900 dark:bg-violet-400"  >Sign in</button>
+                    <div className="space-y-1 text-sm"  >
+                        <label htmlFor="photoURL" className="block dark:text-gray-400"  >PhotoURL</label>
+                        <input type="text" name="photoURL" id="photoURL" placeholder="photoURL" className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400" />
+                    </div>
+                    <button className="block w-full p-3 text-center rounded-sm bg-slate-100 dark:text-gray-900 dark:bg-violet-400"  >Register</button>
                 </form>
                 <div className="flex items-center pt-4 space-x-1"  >
                     <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"  ></div>
