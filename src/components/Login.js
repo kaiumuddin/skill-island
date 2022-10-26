@@ -1,15 +1,41 @@
-import React from 'react';
-import {Link} from "react-router-dom";
+import React, {useContext} from 'react';
+import {Link, useLocation, useNavigate} from "react-router-dom";
+import {AuthContext} from "../contexts/UserContext";
+import {toast} from 'react-toastify';
 
 const Login = () => {
+
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
+
+    const {signin, resetPassword, signInWithGoogle} = useContext(AuthContext);
+
+    const handleSubmit = event => {
+        event.preventDefault();
+
+        const form = event.target;
+
+        const email = form.email.value;
+        const password = form.password.value;
+
+        signin(email, password)
+            .then(result => {
+                toast.success('Login Success!');
+                navigate(from, {replace: true});
+                console.log(result.user);
+            })
+            .catch(error => toast.error(error.message));
+    };
+
     return (
         <div className=" flex justify-center items-center h-screen">
             <div className="w-full max-w-md p-8 space-y-3 rounded-xl shadow-md bg-white dark:bg-gray-900 dark:text-gray-100"  >
                 <h1 className="text-2xl font-bold text-center"  >Login</h1>
-                <form novalidate="" action="" className="space-y-6 ng-untouched ng-pristine ng-valid"  >
+                <form onSubmit={handleSubmit} action="" className="space-y-6 ng-untouched ng-pristine ng-valid"  >
                     <div className="space-y-1 text-sm"  >
-                        <label for="username" className="block dark:text-gray-400"  >Username</label>
-                        <input type="text" name="username" id="username" placeholder="Username" className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400" />
+                        <label for="username" className="block dark:text-gray-400"  >Email</label>
+                        <input type="email" name="email" id="email" placeholder="email" className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400" />
                     </div>
                     <div className="space-y-1 text-sm"  >
                         <label for="password" className="block dark:text-gray-400"  >Password</label>
