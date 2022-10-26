@@ -6,11 +6,19 @@ import 'tippy.js/dist/tippy.css'; // optional
 
 const Tooltip = () => {
     const {user} = useContext(AuthContext);
-    const {displayName} = user;
+    const {displayName, photoURL} = user;
+
+    if (photoURL === null) {
+        window.location.reload(true);
+    }
 
     return (
         <Tippy content={displayName}>
-            <img data-tooltip-target="tooltip-jese" className="w-10 h-10 rounded-full" src={user.photoURL} alt="" />
+            {user?.photoURL ?
+                <img className="w-10 h-10 rounded-full" src={user?.photoURL} alt="" />
+                :
+                <p>nai</p>
+            }
         </Tippy>
     );
 };

@@ -18,12 +18,9 @@ const UserContext = ({children}) => {
         return createUserWithEmailAndPassword(auth, email, password);
     };
 
-    const updateProfile = (name, photo) => {
+    const updateUserProfile = (profile) => {
         setLoading(true);
-        return updateProfile(auth.currentUser, {
-            displayName: name,
-            photoURL: photo
-        });
+        return updateProfile(auth.currentUser, profile);
     };
 
     const verifyEmail = () => {
@@ -57,16 +54,14 @@ const UserContext = ({children}) => {
             setLoading(false);
         });
 
-        return () => {
-            unsubscribe();
-        };
+        return () => unsubscribe();
     }, []);
 
     const authInfo = {
         user,
         loading,
         createUser,
-        updateProfile,
+        updateUserProfile,
         verifyEmail,
         signInWithGoogle,
         logout,

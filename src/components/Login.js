@@ -9,7 +9,6 @@ const Login = () => {
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
 
-    console.log(from);
 
     const {signin, resetPassword, signInWithGoogle} = useContext(AuthContext);
 
@@ -24,7 +23,6 @@ const Login = () => {
         signin(email, password)
             .then(result => {
                 toast.success('Login Success!');
-                console.log(result.user);
                 navigate(from, {replace: true});
             })
             .catch(error => toast.error(error.message));

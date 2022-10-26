@@ -4,7 +4,7 @@ import {AuthContext} from "../contexts/UserContext";
 import {toast} from 'react-toastify';
 const Register = () => {
 
-    const {createUser, updateProfile, verifyEmail, signInWithGoogle} = useContext(AuthContext);
+    const {createUser, updateUserProfile, verifyEmail, signInWithGoogle} = useContext(AuthContext);
     const navigate = useNavigate();
 
     const handleSubmit = event => {
@@ -20,23 +20,40 @@ const Register = () => {
 
         createUser(email, password)
             .then(result => {
+                handlUpdateUserProfile(username, photoURL);
                 toast.success('New account created');
                 console.log(result.user);
-
-                updateProfile(username, photoURL)
-                    .then(() => {
-                        toast.success('Name Updated');
-                        navigate('/');
-                    })
-                    .catch((error) => {
-                        toast.error(error.message);
-                    });
+                form.reset();
+                navigate('/');
 
             })
             .catch((error) => {
                 toast.error(error.message);
             });
 
+    };
+
+
+    const handlUpdateUserProfile = (name, photoURL) => {
+        const profile = {
+            displayName: name,
+            photoURL: photoURL
+        };
+        updateUserProfile(profile)
+            .then(() => {
+                toast.success('Profile updated');
+            })
+            .catch((error) => console.error(error));
+    };
+
+
+    const handleSigninWithGoogle = () => {
+        signInWithGoogle()
+            .then(() => {
+                toast.success('Login Success!');
+                // navigate(from, {replace: true});
+            })
+            .catch(error => toast.error(error.message));
     };
 
     return (
@@ -68,7 +85,7 @@ const Register = () => {
                     <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"  ></div>
                 </div>
                 <div className="flex justify-center space-x-4"  >
-                    <button aria-label="Log in with Google" className="p-3 rounded-sm"  >
+                    <button onClick={handleSigninWithGoogle} aria-label="Log in with Google" className="p-3 rounded-sm"  >
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" className="w-5 h-5 fill-current"  >
                             <path d="M16.318 13.714v5.484h9.078c-0.37 2.354-2.745 6.901-9.078 6.901-5.458 0-9.917-4.521-9.917-10.099s4.458-10.099 9.917-10.099c3.109 0 5.193 1.318 6.38 2.464l4.339-4.182c-2.786-2.599-6.396-4.182-10.719-4.182-8.844 0-16 7.151-16 16s7.156 16 16 16c9.234 0 15.365-6.49 15.365-15.635 0-1.052-0.115-1.854-0.255-2.651z"  ></path>
                         </svg>

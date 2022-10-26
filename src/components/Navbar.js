@@ -7,6 +7,7 @@ import {toast} from 'react-toastify';
 
 const Navbar = () => {
     const {user, logout} = useContext(AuthContext);
+
     const [expand, setExpand] = useState(false);
 
     const handleExpand = () => {
@@ -29,17 +30,13 @@ const Navbar = () => {
                 </Link>
                 <div className="flex md:order-2 gap-2">
                     {
-                        user?.email ? (
+                        user ? (
                             <>
                                 <button onClick={handleLogout} type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Logout</button>
-                                <Tooltip></Tooltip>
+                                <Tooltip ></Tooltip>
                             </>
                         ) : (
-
-
                             <Link to='/login' type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Login</Link>
-
-
                         )
                     }
 
@@ -62,7 +59,7 @@ const Navbar = () => {
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav >
 
     );
 };

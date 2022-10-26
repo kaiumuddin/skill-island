@@ -6,7 +6,6 @@ import Sidebar from "./Sidebar";
 const Courses = () => {
 
     const loadedData = useLoaderData();
-    console.log(loadedData);
 
     return (
         <div className="flex">
