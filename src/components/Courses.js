@@ -10,7 +10,7 @@ const Courses = () => {
     return (
         <div className="flex">
             <Sidebar loadedData={loadedData}></Sidebar>
-            <section className="py-6 sm:py-12 dark:dark:bg-gray-800 dark:dark:text-gray-100"  >
+            <section className="py-6 sm:py-12 dark:dark:bg-gray-800 dark:dark:text-gray-100 mx-auto"  >
                 <div className="container p-6 mx-auto space-y-8"  >
                     <div className="space-y-2 text-center"  >
                         <h2 className="text-3xl font-bold"  >Available Courses</h2>
