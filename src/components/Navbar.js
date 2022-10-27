@@ -29,7 +29,7 @@ const Navbar = () => {
                     <img src="https://flowbite.com/docs/images/logo.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
                     <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Skill Island</span>
                 </Link>
-                <div className="flex md:order-2 gap-2">
+                <div className="flex  items-center md:order-2 gap-2">
                     <Theme></Theme>
                     {
                         user ? (

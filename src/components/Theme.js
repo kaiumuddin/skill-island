@@ -16,7 +16,7 @@ const Theme = () => {
         <DarkModeToggle
             onChange={setIsDarkMode}
             checked={isDarkMode}
-            size={80}
+            size={50}
         />
     );
 };
