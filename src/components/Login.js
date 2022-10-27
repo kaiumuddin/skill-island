@@ -43,7 +43,7 @@ const Login = () => {
         signInWithGithub()
             .then(() => {
                 toast.success('Github Login Success!');
-                navigate('/');
+                navigate(from, {replace: true});
             })
             .catch(error => toast.error(error.message));
 
