@@ -4,6 +4,7 @@ import {Link} from "react-router-dom";
 import {AuthContext} from "../contexts/UserContext";
 import Tooltip from "./Tooltip";
 import {toast} from 'react-toastify';
+import Theme from "./Theme";
 
 const Navbar = () => {
     const {user, logout} = useContext(AuthContext);
@@ -29,6 +30,7 @@ const Navbar = () => {
                     <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Skill Island</span>
                 </Link>
                 <div className="flex md:order-2 gap-2">
+                    <Theme></Theme>
                     {
                         user ? (
                             <>
