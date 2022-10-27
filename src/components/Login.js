@@ -50,7 +50,7 @@ const Login = () => {
     };
 
     return (
-        <div className=" flex justify-center items-center h-screen">
+        <div className=" flex justify-center items-center h-screen bg-white dark:bg-gray-800">
             <div className="w-full max-w-md p-8 space-y-3 rounded-xl shadow-md bg-white dark:bg-gray-900 dark:text-gray-100"  >
                 <h1 className="text-2xl font-bold text-center"  >Login</h1>
                 <form onSubmit={handleSubmit} action="" className="space-y-6 ng-untouched ng-pristine ng-valid"  >

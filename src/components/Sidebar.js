@@ -4,10 +4,20 @@ import {Link} from "react-router-dom";
 const Sidebar = ({loadedData}) => {
 
     return (
-        <aside className="w-64 shadow-md" aria-label="Sidebar">
+        <aside className="md:w-64 shadow-md" aria-label="Sidebar">
             <div className="h-full overflow-y-auto py-4 px-3 bg-gray-50 dark:bg-gray-800">
-                <h1 className="p-2 text-2xl ">Courses</h1>
-                <ul className="space-y-2">
+                <h1 className="p-2 text-2xl text-black dark:text-white">Courses</h1>
+                <div className="h-1 bg-gray-300 dark:bg-white "></div>
+                <div className="md:hidden mt-4 text-black dark:text-white flex flex-wrap gap-2">
+                    {
+                        loadedData.map(course =>
+                            <Link to={`/courseDetails/${course.id}`} key={course.id} className="rounded-full border-2 boder-white px-3 py-2">
+                                <span >{course.name}</span>
+                            </Link>
+                        )
+                    }
+                </div>
+                <ul className="space-y-2 hidden md:block">
                     {
                         loadedData.map(course =>
                             <li key={course.id}>
