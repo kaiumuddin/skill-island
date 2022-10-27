@@ -5,6 +5,7 @@ import {AuthContext} from "../contexts/UserContext";
 import Tooltip from "./Tooltip";
 import {toast} from 'react-toastify';
 import Theme from "./Theme";
+import {FaAdjust, FaReadme} from "react-icons/fa";
 
 const Navbar = () => {
     const {user, logout} = useContext(AuthContext);
@@ -25,8 +26,8 @@ const Navbar = () => {
     return (
         <nav className="bg-white shadow-md px-2 sm:px-4 py-2.5 dark:bg-gray-900  border-b border-gray-200 dark:border-gray-600">
             <div className="container flex flex-wrap justify-between items-center mx-auto">
-                <Link href="https://flowbite.com/" className="flex items-center">
-                    <img src="https://flowbite.com/docs/images/logo.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
+                <Link className="flex items-center">
+                    <FaReadme className="mr-3 h-6 sm:h-9"></FaReadme>
                     <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Skill Island</span>
                 </Link>
                 <div className="flex  items-center md:order-2 gap-2">
