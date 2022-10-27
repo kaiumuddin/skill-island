@@ -1,5 +1,6 @@
 import React from 'react';
 
+// Blog section 
 const Blog = () => {
     return (
         <div className="w-full bg-white dark:bg-gray-800 h-full flex flex-col gap-2 p-4">

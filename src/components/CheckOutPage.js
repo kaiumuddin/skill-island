@@ -1,6 +1,8 @@
 import React from 'react';
 import {useLoaderData} from "react-router-dom";
 
+// Single Course
+// This is private route  
 const CheckOutPage = () => {
     const singleCourse = useLoaderData();
     const {name} = singleCourse;

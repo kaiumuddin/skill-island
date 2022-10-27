@@ -11,6 +11,7 @@ const Theme = () => {
         document.documentElement.classList.remove("dark");
     }
 
+
     return (
 
         <DarkModeToggle

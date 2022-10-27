@@ -2,12 +2,13 @@ import React, {useContext} from 'react';
 import {Link, useNavigate} from "react-router-dom";
 import {AuthContext} from "../contexts/UserContext";
 import {toast} from 'react-toastify';
+import {getAuth} from "firebase/auth";
 const Register = () => {
 
-    const {createUser, updateUserProfile, signInWithGoogle, signInWithGithub} = useContext(AuthContext);
+    const {createUser, setUser, updateUserProfile, signInWithGoogle, signInWithGithub} = useContext(AuthContext);
     const navigate = useNavigate();
 
-
+    // Handle submit
     const handleSubmit = event => {
         event.preventDefault();
         const form = event.target;
@@ -33,21 +34,21 @@ const Register = () => {
 
     };
 
-
+    // Update profile
     const handlUpdateUserProfile = (name, photoURL) => {
         const profile = {
             displayName: name,
             photoURL: photoURL
         };
         updateUserProfile(profile)
-            .then(() => {
+            .then((result) => {
                 toast.success('Profile updated');
                 navigate('/');
             })
             .catch((error) => console.error(error));
     };
 
-
+    // Google Sign In 
     const handleSigninWithGoogle = () => {
         signInWithGoogle()
             .then(() => {
@@ -57,6 +58,7 @@ const Register = () => {
             .catch(error => toast.error(error.message));
     };
 
+    // Github sign in 
     const handleGithubSignIn = () => {
         signInWithGithub()
             .then(() => {
@@ -73,7 +75,7 @@ const Register = () => {
                 <h1 className="text-2xl font-bold text-center"  >Register</h1>
                 <div className="space-y-6 ng-untouched ng-pristine ng-valid"  >
                     <div className="space-y-1 text-sm"  >
-                        <label htmlFor="username" className="block dark:text-gray-400"  >Username</label>
+                        <label htmlFor="username" className="block dark:text-gray-400"  >Full Name</label>
                         <input type="text" name="username" id="username" placeholder="Username" className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400" />
                     </div>
                     <div className="space-y-1 text-sm"  >

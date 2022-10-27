@@ -14,24 +14,31 @@ const CourseDetail = () => {
 
     return (
         <>
-            <div className="h-full w-screen py-5 bg-white-100 dark:bg-gray-800">
+            <div className="h-screen w-screen  py-5 bg-white-100 dark:bg-gray-800">
                 <section ref={ref} className="bg-white dark:bg-gray-800 dark:text-gray-100 dark:border-2 dark:shadow-white  md:w-7/12 mx-auto shadow-md" >
                     <div className="container flex flex-col mx-auto " >
+
+                        {/* Header  */}
                         <div className="flex justify-between py-4 px-8">
                             <div className="mb-2 " >
                                 <h2 className="text-xl font-semibold tracking-wide" >{name}</h2>
                             </div>
+
+                            {/* react to pdf  */}
                             <Pdf targetRef={ref} filename="code-example.pdf">
                                 {({toPdf}) => <button onClick={toPdf}><FaDownload></FaDownload></button>}
                             </Pdf>
                         </div>
 
+                        {/* Image  */}
                         <div className=" dark:bg-gray-800" >
                             <div className="w-full flex items-center justify-center p-4 md:p-8 lg:p-12" >
                                 <img src={img} alt="" className="rounded-lg shadow-lg object-cover dark:bg-gray-500 aspect-video" />
                             </div>
                         </div>
-                        <div className="flex flex-col px-6 py-8 space-y-6 rounded-sm sm:p-8 lg:p-12  xl:w-2/5 dark:bg-violet-900 dark:text-white" >
+
+                        {/* Body  */}
+                        <div className="flex flex-col px-6 py-8 space-y-6 rounded-sm sm:p-8 lg:p-12 dark:bg-violet-900 dark:text-white" >
 
                             <div className="flex  space-x-2 sm:space-x-4" >
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="flex-shrink-0 w-6 h-6" >

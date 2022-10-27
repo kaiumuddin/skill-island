@@ -24,10 +24,6 @@ const UserContext = ({children}) => {
         return updateProfile(auth.currentUser, profile);
     };
 
-    const verifyEmail = () => {
-        setLoading(true);
-        return sendEmailVerification(auth.currentUser);
-    };
 
     const signInWithGoogle = () => {
         setLoading(true);
@@ -49,10 +45,6 @@ const UserContext = ({children}) => {
         return signInWithEmailAndPassword(auth, email, password);
     };
 
-    const resetPassword = email => {
-        setLoading(true);
-        return sendPasswordResetEmail(auth, email);
-    };
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
@@ -69,12 +61,10 @@ const UserContext = ({children}) => {
         setUser,
         createUser,
         updateUserProfile,
-        verifyEmail,
         signInWithGoogle,
         signInWithGithub,
         logout,
         signin,
-        resetPassword,
     };
 
     return (
