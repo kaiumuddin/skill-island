@@ -14,7 +14,7 @@ const MyCourses = () => {
     useEffect(() => {
 
 
-        const url = `http://localhost:5000/mycourses/${user.email}`;
+        const url = `https://skill-island-server.vercel.app/mycourses/${user.email}`;
         fetch(url)
             .then(res => res.json())
             .then(fromDb => {

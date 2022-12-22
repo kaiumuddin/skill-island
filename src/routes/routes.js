@@ -41,19 +41,19 @@ const router = createBrowserRouter([
             {
                 path: '/courses',
                 element: <Courses></Courses>,
-                loader: () => fetch('http://localhost:5000/courses')
+                loader: () => fetch('https://skill-island-server.vercel.app/courses')
 
             },
             {
                 path: '/courseDetails/:id',
                 element: <CourseDetail></CourseDetail>,
-                loader: ({params}) => fetch(`http://localhost:5000/courses/${params.id}`)
+                loader: ({params}) => fetch(`https://skill-island-server.vercel.app/courses/${params.id}`)
 
             },
             {
                 path: '/checkout/:id',
                 element: <PrivateRoute><CheckOutPage></CheckOutPage></PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/courses/${params.id}`)
+                loader: ({params}) => fetch(`https://skill-island-server.vercel.app/courses/${params.id}`)
 
             },
             {
@@ -63,7 +63,7 @@ const router = createBrowserRouter([
             {
                 path: '/courselessons/:id',
                 element: <CourseLessons></CourseLessons>,
-                loader: ({params}) => fetch(`http://localhost:5000/courselessons/${params.id}`)
+                loader: ({params}) => fetch(`https://skill-island-server.vercel.app/courselessons/${params.id}`)
 
             },
             {

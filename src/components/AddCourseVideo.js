@@ -24,7 +24,7 @@ const AddCourseVideo = () => {
         };
 
 
-        const url = `http://localhost:5000/videos`;
+        const url = `https://skill-island-server.vercel.app/videos`;
 
 
         fetch(url, {
@@ -55,7 +55,7 @@ const AddCourseVideo = () => {
     const [courses, setCourses] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/courses')
+        fetch('https://skill-island-server.vercel.app/courses')
             .then(res => res.json())
             .then(fromDb => {
                 setCourses(fromDb);

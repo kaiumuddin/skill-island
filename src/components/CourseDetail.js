@@ -29,7 +29,7 @@ const CourseDetail = () => {
 
         console.log(newCourse);
 
-        const url = `http://localhost:5000/enrole`;
+        const url = `https://skill-island-server.vercel.app/enrole`;
 
 
         fetch(url, {

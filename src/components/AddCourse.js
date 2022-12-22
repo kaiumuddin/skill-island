@@ -24,7 +24,7 @@ const AddCourse = () => {
         };
 
 
-        const url = `http://localhost:5000/addcourse`;
+        const url = `https://skill-island-server.vercel.app/addcourse`;
 
 
         fetch(url, {
